@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -100,8 +99,14 @@
     <p><i>Cha mẹ vui lòng đánh giá mức độ của từng biểu hiện được mô tả dưới đây ở bản thân.</i> </p>
     
     <div class="scale-info">
-        <strong>Thang điểm đánh giá:</strong><br>
-        0 = Chưa bao giờ | 1 = Vài lần mỗi năm | 2 = Ít nhất mỗi tháng một lần | 3 = Vài lần mỗi tháng | 4 = Một lần mỗi tuần | 5 = Vài lần mỗi tuần | 6 = Mỗi ngày
+       <strong>Thang điểm đánh giá:</strong><br>
+        • 0 = Chưa bao giờ<br>
+        • 1 = Vài lần mỗi năm<br>
+        • 2 = Ít nhất mỗi tháng một lần<br>
+        • 3 = Vài lần mỗi tháng<br>
+        • 4 = Một lần mỗi tuần<br>
+        • 5 = Vài lần mỗi tuần<br>
+        • 6 = Mỗi ngày
     </div>
 
     <div id="questions"></div>
@@ -143,14 +148,15 @@
         function initQuestions() {
             const questionsDiv = document.getElementById('questions');
             questionsVi.forEach((q, index) => {
+                // Đã loại bỏ thẻ <br> thừa trong label để số nằm giữa vòng tròn
                 questionsDiv.innerHTML += `
                     <div class="question">
-                        <p><strong>Câu ${index + 1}:</strong> ${q}</p>
+                        <p><strong>${index + 1}:</strong> ${q}</p>
                         <div class="options">
                             ${[0, 1, 2, 3, 4, 5, 6].map(value => `
                                 <div class="option">
                                     <input type="radio" id="q${index}_${value}" name="q${index}" value="${value}">
-                                    <label for="q${index}_${value}"><br>${value}</label>
+                                    <label for="q${index}_${value}">${value}</label>
                                 </div>
                             `).join('')}
                         </div>
